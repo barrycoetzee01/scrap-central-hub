@@ -72,17 +72,18 @@ const Index = () => {
 
   // Stacked sales by material over time
   const salesByMaterialTS = useMemo(() => {
-    const buckets = new Map<string, Record<string, number>>();
+    type Row = { period: string } & Record<string, number | string>;
+    const buckets = new Map<string, Row>();
     const mats = new Set<string>();
     for (const s of filtered.sales) {
       const k = timeSeries([s], "sale_date", "total_received", filters.granularity)[0].period;
       mats.add(s.material_type);
-      const row = buckets.get(k) ?? { period: k };
+      const row: Row = (buckets.get(k) as Row) ?? { period: k };
       row[s.material_type] = ((row[s.material_type] as number) ?? 0) + s.total_received;
       buckets.set(k, row);
     }
     return {
-      data: Array.from(buckets.values()).sort((a, b) => String(a.period).localeCompare(String(b.period))),
+      data: Array.from(buckets.values()).sort((a, b) => a.period.localeCompare(b.period)),
       materials: Array.from(mats),
     };
   }, [filtered.sales, filters.granularity]);
