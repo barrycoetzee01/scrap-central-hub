@@ -2,104 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Copper Forge — dark industrial operations dashboard */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Forge / charcoal-green base */
+    --background: 140 14% 6%;
+    --foreground: 36 30% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 145 12% 9%;
+    --card-foreground: 36 30% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 145 14% 8%;
+    --popover-foreground: 36 30% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Copper as primary brand */
+    --primary: 24 64% 46%;
+    --primary-foreground: 30 30% 98%;
+    --primary-glow: 28 80% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 145 10% 14%;
+    --secondary-foreground: 36 30% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 145 8% 13%;
+    --muted-foreground: 40 8% 62%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Amber highlight */
+    --accent: 38 92% 55%;
+    --accent-foreground: 145 20% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 6 78% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --success: 152 56% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 145 20% 8%;
 
-    --radius: 0.5rem;
+    --border: 145 12% 16%;
+    --input: 145 12% 14%;
+    --ring: 24 64% 46%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.75rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Chart palette — copper, amber, steel, brass, sage, slate */
+    --chart-1: 24 64% 52%;   /* copper */
+    --chart-2: 38 92% 58%;   /* amber */
+    --chart-3: 195 50% 55%;  /* steel blue */
+    --chart-4: 45 65% 55%;   /* brass */
+    --chart-5: 152 40% 52%;  /* sage */
+    --chart-6: 220 12% 60%;  /* slate */
+    --chart-7: 14 70% 55%;   /* ember */
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Effects */
+    --gradient-copper: linear-gradient(135deg, hsl(24 64% 46%), hsl(28 80% 60%));
+    --gradient-forge: linear-gradient(180deg, hsl(145 14% 8%), hsl(140 14% 6%));
+    --gradient-card: linear-gradient(180deg, hsl(145 12% 10%), hsl(145 12% 8%));
+    --shadow-glow: 0 0 40px -10px hsl(24 80% 50% / 0.35);
+    --shadow-elevate: 0 8px 24px -8px hsl(0 0% 0% / 0.6);
+    --shadow-inset: inset 0 1px 0 0 hsl(36 30% 92% / 0.04);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 145 14% 7%;
+    --sidebar-foreground: 36 30% 88%;
+    --sidebar-primary: 24 64% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 10% 12%;
+    --sidebar-accent-foreground: 36 30% 92%;
+    --sidebar-border: 145 12% 14%;
+    --sidebar-ring: 24 64% 46%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Same — design is dark-first */
+    --background: 140 14% 6%;
+    --foreground: 36 30% 92%;
+    --card: 145 12% 9%;
+    --card-foreground: 36 30% 92%;
+    --popover: 145 14% 8%;
+    --popover-foreground: 36 30% 92%;
+    --primary: 24 64% 46%;
+    --primary-foreground: 30 30% 98%;
+    --secondary: 145 10% 14%;
+    --secondary-foreground: 36 30% 92%;
+    --muted: 145 8% 13%;
+    --muted-foreground: 40 8% 62%;
+    --accent: 38 92% 55%;
+    --accent-foreground: 145 20% 8%;
+    --destructive: 6 78% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 145 12% 16%;
+    --input: 145 12% 14%;
+    --ring: 24 64% 46%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, hsl(24 60% 30% / 0.12), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, hsl(38 70% 40% / 0.08), transparent 60%),
+      linear-gradient(180deg, hsl(140 14% 5%), hsl(140 14% 6%));
+    font-feature-settings: "cv02","cv03","cv04","cv11";
+  }
+  ::selection { background: hsl(var(--primary) / 0.4); color: hsl(var(--foreground)); }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(145 12% 8%); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(145 12% 18%);
+    border-radius: 8px;
+    border: 2px solid hsl(145 12% 8%);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(24 50% 35%); }
+}
+
+@layer components {
+  .surface {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-elevate), var(--shadow-inset);
+    @apply border border-border/60 rounded-xl;
+  }
+  .surface-glow {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-elevate), var(--shadow-inset), var(--shadow-glow);
+    @apply border border-primary/30 rounded-xl;
+  }
+  .text-copper {
+    background: var(--gradient-copper);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(145 12% 14% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(145 12% 14% / 0.5) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
