@@ -1,6 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
-import { ResponsiveContainer, Sparkline as _SL } from "recharts";
-import { Area, AreaChart } from "recharts";
+import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { cn } from "@/lib/utils";
 
 interface KpiCardProps {
@@ -74,5 +73,3 @@ export function KpiCard({ label, value, delta, hint, trend, highlight, icon }: K
   );
 }
 
-// Re-export to avoid unused import warnings (Sparkline isn't used directly)
-void _SL;
